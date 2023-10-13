@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 plt.style.use('fivethirtyeight')
 
-united = Table.read_table('Data_Science/Data/united_summer2015.csv')
+united = Table.read_table('Data/united_summer2015.csv')
 print(united, "\n")
 
 print(united.column('Delay').min(), "\n", united.column('Delay').max(), "\n")
