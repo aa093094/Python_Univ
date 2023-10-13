@@ -22,6 +22,7 @@ print(die, "\n")
 
 die_bins = np.arange(0.5, 6.6, 1)
 die.hist(bins = die_bins)
+plots.title("Probability of dice rolls")
 plots.show()
 
 print(die.sample(10), "\n")
@@ -30,7 +31,9 @@ def empirical_hist_die(n):
     die.sample(n).hist(bins = die_bins)
 
 empirical_hist_die(10)
+plots.title("Roll the dice 10 times")
 plots.show()
 
 empirical_hist_die(100000)
+plots.title("Roll the dice 100000 times")
 plots.show()
