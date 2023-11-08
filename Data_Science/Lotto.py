@@ -2,6 +2,7 @@ from datascience import *
 import numpy as np
 import threading
 import time
+import datetime
 
 import matplotlib.pyplot as plots
 plots.style.use('fivethirtyeight')
@@ -23,6 +24,8 @@ print(buyCount)
 print(count_1st)
 win_cnt = 0
 cnt = 0
+current_time = datetime.datetime.now()
+formatted_time = current_time.strftime("%H:%M")
 
 def win_lotto(win_cnt):
   if win_cnt > 0:
@@ -34,11 +37,11 @@ def win_lotto_count(num_sel, win_cnt, cnt):
     win_cnt = win_cnt +1
   cnt = cnt + 1
   if (cnt == (int)(buyCount/4)):
-    print(cnt, time.time())
+    print(cnt, formatted_time)
   elif (cnt == (int)(buyCount/4*2)):
-    print(cnt, time.time())
+    print(cnt, formatted_time)
   elif (cnt == (int)(buyCount/4*3)):
-    print(cnt, time.time())
+    print(cnt, formatted_time)
 
 def sampling():
   for i in np.arange(buyCount):
@@ -49,7 +52,7 @@ def sampling():
     num_sel = []
 
 thread_list = []
-print(cnt, time.time())
+print(cnt, formatted_time)
 for i in range(10):
   thread = threading.Thread(target = sampling)
   thread_list.append(thread)
