@@ -36,21 +36,31 @@ def win_lotto_count(num_sel, win_cnt, cnt):
   if Lotto_1st_list == num_sel:
     win_cnt = win_cnt +1
   cnt = cnt + 1
+  """
   if (cnt == (int)(buyCount/4)):
     print(cnt, formatted_time)
   elif (cnt == (int)(buyCount/4*2)):
     print(cnt, formatted_time)
   elif (cnt == (int)(buyCount/4*3)):
     print(cnt, formatted_time)
+  """
 
 def sampling():
+  global cnt
+  global win_cnt
   for i in np.arange(buyCount):
     num_sel_temp = np.random.choice(a=45, size=6, replace=False)
     num_sel = [(b+1) for b in num_sel_temp]
     num_sel = sorted(num_sel)
-    win_lotto_count(num_sel, win_cnt, cnt)
+    if (Lotto_1st_list == num_sel):
+      win_cnt = win_cnt + 1
     num_sel = []
-
+    cnt = cnt + 1
+    if (cnt % 10000000 == 0):
+      current_time = datetime.datetime.now()
+      formatted_time = current_time.strftime("%H:%M")
+      print(win_cnt, cnt, formatted_time)
+    
 thread_list = []
 print(cnt, formatted_time)
 for i in range(10):
@@ -61,6 +71,8 @@ for i in range(10):
 for thread in thread_list:
   thread.join()
 
-print(cnt)
-print(win_lotto(win_cnt))
+current_time = datetime.datetime.now()
+formatted_time = current_time.strftime("%H:%M")
+print(cnt, formatted_time)
+
 print(win_cnt)
