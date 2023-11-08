@@ -6,7 +6,6 @@ import time
 import matplotlib.pyplot as plots
 plots.style.use('fivethirtyeight')
 
-# 랜덤 넘버 제너레이터 시작~~
 np.random.seed(int(time.time()))
 # np.random.seed(3)
 Lotto_table = Table.read_table('Data_Science/Data/Lotto.CSV')
@@ -18,35 +17,35 @@ for i in range(1, 7):
 index = Sample.column(0)[0]
 print(index)
 buyCount = Sample.column(10)[0].astype(int)
-buyLottoList = []
 count_1st = Sample.column(8)[0]
 print(buyCount)
 print(count_1st)
+win_cnt = 0
+
+def win_lotto():
+  if win_cnt > 0:
+    return 1
+  return -1
+
+def win_lotto_count(lotto, num_sel):
+  if lotto == num_sel:
+    win_cnt = win_cnt +1
+
 def sampling():
   for i in np.arange(buyCount):
     num_sel_temp = np.random.choice(a=45, size=6, replace=False)
-    # 뽑은 6개 숫자 보정
     num_sel = [(b+1) for b in num_sel_temp]
     num_sel = sorted(num_sel)
-    buyLottoList.append(num_sel)
-sampling()
-print(len(buyLottoList))
-index = np.arange(1, buyCount+1, 1)
-lotto = Table().with_columns(
-    'Index', index,
-    'Number', buyLottoList
-    )
-def win_lotto(lotto):
-  for i in range(buyCount):
-    if lotto == buyLottoList[i]:
-      return 1
-  return -1
+    win_lotto_count(Lotto_1st_list, num_sel)
+    num_sel = []
 
-def win_lotto_count(lotto):
-  cnt = 0
-  for i in range(buyCount):
-    if lotto == buyLottoList[i]:
-      cnt = cnt +1
-  return cnt
-print(win_lotto(Lotto_1st_list))
-print(win_lotto_count(Lotto_1st_list))
+thread_list = []
+for i in range(2000):
+  thread = threading.Thread(target = sampling())
+  thread_list.append(thread)
+
+for i in range(2000):
+  thread_list[i].start()
+
+print(win_lotto())
+print(win_cnt)
