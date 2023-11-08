@@ -63,8 +63,8 @@ def sampling(Count):
     
 thread_list = []
 print(cnt, formatted_time)
-for i in range(10):
-  thread = threading.Thread(target = sampling(buyCount/10))
+for i in range(100000):
+  thread = threading.Thread(target = sampling(buyCount/100000))
   thread_list.append(thread)
   thread.start()
 
