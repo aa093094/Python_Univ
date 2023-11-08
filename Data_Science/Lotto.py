@@ -45,10 +45,10 @@ def win_lotto_count(num_sel, win_cnt, cnt):
     print(cnt, formatted_time)
   """
 
-def sampling():
+def sampling(Count):
   global cnt
   global win_cnt
-  for i in np.arange(buyCount):
+  for i in np.arange(Count):
     num_sel_temp = np.random.choice(a=45, size=6, replace=False)
     num_sel = [(b+1) for b in num_sel_temp]
     num_sel = sorted(num_sel)
@@ -64,7 +64,7 @@ def sampling():
 thread_list = []
 print(cnt, formatted_time)
 for i in range(10):
-  thread = threading.Thread(target = sampling)
+  thread = threading.Thread(target = sampling(buyCount/10))
   thread_list.append(thread)
   thread.start()
 
