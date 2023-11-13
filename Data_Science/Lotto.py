@@ -34,6 +34,22 @@ real_win_cnt_list = []
 sample_win_cnt_list = []
 buyCount_list = []
 
+def sampling(Count):
+  global cnt
+  global win_cnt
+  for i in np.arange(Count):
+    num_sel_temp = np.random.choice(a=45, size=6, replace=False)
+    num_sel = [(b+1) for b in num_sel_temp]
+    num_sel = sorted(num_sel)
+    if (Lotto_1st_list == num_sel):
+      win_cnt = win_cnt + 1
+    num_sel = []
+    cnt = cnt + 1
+    if (cnt % 10000000 == 0):
+      current_time = datetime.datetime.now()
+      formatted_time = current_time.strftime("%H:%M")
+      print(win_cnt, cnt, formatted_time)
+
 for r in range(10):
   for j in range(0, 11):
     Lotto_1st_list = []
@@ -53,22 +69,6 @@ for r in range(10):
     cnt = 0
     current_time = datetime.datetime.now()
     formatted_time = current_time.strftime("%H:%M")
-
-    def sampling(Count):
-      global cnt
-      global win_cnt
-      for i in np.arange(Count):
-        num_sel_temp = np.random.choice(a=45, size=6, replace=False)
-        num_sel = [(b+1) for b in num_sel_temp]
-        num_sel = sorted(num_sel)
-        if (Lotto_1st_list == num_sel):
-          win_cnt = win_cnt + 1
-        num_sel = []
-        cnt = cnt + 1
-        if (cnt % 10000000 == 0):
-          current_time = datetime.datetime.now()
-          formatted_time = current_time.strftime("%H:%M")
-          print(win_cnt, cnt, formatted_time)
         
     thread_list = []
     print(cnt, formatted_time)
