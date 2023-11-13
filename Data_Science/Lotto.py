@@ -92,4 +92,4 @@ All_table = Table().with_columns(
   'Sample_cnt', sampleCount_list
 )
 
-All_table.to_csv('Sampling1.csv')
+All_table.to_csv('Data_Science/Data/Sampling1.csv')
