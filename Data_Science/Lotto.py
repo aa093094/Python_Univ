@@ -10,22 +10,25 @@ plots.style.use('fivethirtyeight')
 np.random.seed(int(time.time()))
 # np.random.seed(3)
 Lotto_table = Table.read_table('Data_Science/Data/Lotto.CSV')
+reversed_table = Lotto_table.sort('회차')
 number = np.random.randint(0, 100)
 num_list = []
 if (number > 90):
-  num_list.append(0)
   for i in range(0, 10):
     temp = number + 100 * i
     num_list.append(temp)
+  num_list.append(1090)
 else:
   for i in range(0, 11):
     temp = number + 100 * i
     num_list.append(temp)
 Sample_list = []
 for nums in num_list:
-  Sample = Lotto_table.take(make_array(nums))
+  Sample = reversed_table.take(make_array(nums))
   Sample_list.append(Sample)
 Lotto_table = ""
+reversed_table = ""
+num_list = []
 index_list = []
 real_win_cnt_list = []
 sample_win_cnt_list = []
