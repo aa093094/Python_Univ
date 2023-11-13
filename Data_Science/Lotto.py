@@ -94,6 +94,7 @@ for r in range(10):
   )
 
   All_table.to_csv('Lotto_Sampling' + str(r) + '.csv')
+  All_table = ""
 
 
 
