@@ -93,9 +93,12 @@ for r in range(10):
     'Sample_win', sample_win_cnt_list
   )
 
-  All_table.to_csv('Lotto_Sampling' + str(r) + '.csv')
+  All_table.to_csv('Data_Science/Data/Lotto_Sampling' + str(r) + '.csv')
   All_table = ""
-
+  index_list = []
+  real_win_cnt_list = []
+  sample_win_cnt_list = []
+  buyCount_list = []
 
 
 
