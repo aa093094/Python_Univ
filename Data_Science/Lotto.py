@@ -13,6 +13,7 @@ Lotto_table = Table.read_table('Data_Science/Data/Lotto.CSV')
 reversed_table = Lotto_table.sort('회차')
 number = np.random.randint(0, 100)
 num_list = []
+number = 17
 if (number > 90):
   for i in range(0, 10):
     temp = number + 100 * i
@@ -50,7 +51,7 @@ def sampling(Count):
       formatted_time = current_time.strftime("%H:%M")
       print(win_cnt, cnt, formatted_time)
 
-for r in range(10):
+for r in range(3, 10):
   for j in range(0, 11):
     Lotto_1st_list = []
     for i in range(1, 7):
