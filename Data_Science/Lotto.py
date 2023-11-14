@@ -51,7 +51,7 @@ def sampling(Count):
       formatted_time = current_time.strftime("%H:%M")
       print(win_cnt, cnt, formatted_time)
 
-for r in range(3, 10):
+for r in range(9, 10):
   for j in range(0, 11):
     Lotto_1st_list = []
     for i in range(1, 7):
@@ -74,8 +74,8 @@ for r in range(3, 10):
     thread_list = []
     print(cnt, formatted_time)
     np.random.seed(int(time.time()))
-    for i in range(2000):
-      thread = threading.Thread(target = sampling(buyCount/2000))
+    for i in range(100000):
+      thread = threading.Thread(target = sampling(buyCount/100000))
       thread_list.append(thread)
       thread.start()
 
