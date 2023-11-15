@@ -49,7 +49,10 @@ sum = 0
 for cnt in win_cnt_list:
     sum = sum + cnt
 avg = sum / len(win_cnt_list)
-print(avg)
+var = np.var(win_cnt_list)
+print("Avg of all data: " + avg)
+print("Variance of all data: " + var)
+
 win_table = Table().with_column('Win_cnt', win_cnt_list)
 win_table.hist(bins = np.arange(0, 30, 1))
 
